@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface WebApplicationRepository extends JpaRepository<WebApplication, Long> {
-    boolean existsByFrontendUrlOrBackendUrl(WebAddress frontendUrl, WebAddress backendUrl);
+    boolean existsByFrontendUrl(WebAddress frontendUrl);
+
+    boolean existsByBackendUrl(WebAddress backendUrl);
 }
