@@ -1,5 +1,6 @@
 package com.intellectsoft.platform.u20201e843.portfolio.domain.model.aggregates;
 
+import com.intellectsoft.platform.u20201e843.portfolio.domain.model.commands.CreateWebApplicationCommand;
 import com.intellectsoft.platform.u20201e843.portfolio.domain.model.valueobjects.BackendStack;
 import com.intellectsoft.platform.u20201e843.portfolio.domain.model.valueobjects.ClientId;
 import com.intellectsoft.platform.u20201e843.portfolio.domain.model.valueobjects.CloudPlatform;
@@ -67,6 +68,16 @@ public class WebApplication extends AuditableAbstractAggregateRoot<WebApplicatio
 
     }
 
-    //public WebApplication(Command command) {
-    //}
+    public WebApplication(CreateWebApplicationCommand command) {
+        this.name = command.name();
+        this.clientId = new ClientId(command.clientId());
+        this.frontendStack = FrontendStack.valueOf(command.frontendStack());
+        this.frontendUrl = new WebAddress(command.frontendUrl());
+        this.backendStack = BackendStack.valueOf(command.backendStack());
+        this.backendUrl = new WebAddress(command.backendUrl());
+        this.cloudPlatform = CloudPlatform.valueOf(command.cloudPlatform());
+        this.description = command.description();
+        this.availablePercentage = command.availablePercentage();
+        this.launchDate = command.launchDate();
+    }
 }
