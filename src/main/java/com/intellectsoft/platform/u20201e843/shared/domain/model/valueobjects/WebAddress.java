@@ -1,6 +1,8 @@
 package com.intellectsoft.platform.u20201e843.shared.domain.model.valueobjects;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 /**
  * Value object representing a valid web address
@@ -16,7 +18,11 @@ import jakarta.persistence.Embeddable;
  * @since 1.0.0
  */
 @Embeddable
-public record WebAddress(String webAddress) {
+public record WebAddress(
+        @NotBlank
+        @Size(max = 512)
+        String webAddress
+) {
 
     public WebAddress() {
         this(null);
