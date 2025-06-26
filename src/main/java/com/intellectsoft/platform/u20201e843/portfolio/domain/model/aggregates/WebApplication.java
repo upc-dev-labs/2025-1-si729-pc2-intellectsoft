@@ -20,7 +20,7 @@ public class WebApplication extends AuditableAbstractAggregateRoot<WebApplicatio
 
     @NotBlank
     @Size(max = 80)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 80)
     private String name;
 
     @Embedded
@@ -35,7 +35,7 @@ public class WebApplication extends AuditableAbstractAggregateRoot<WebApplicatio
 
     @Embedded
     @NotNull
-    @AttributeOverride(name = "webAddress", column = @Column(name = "frontend_url", nullable = false))
+    @AttributeOverride(name = "webAddress", column = @Column(name = "frontend_url", nullable = false, length = 512))
     private WebAddress frontendUrl;
 
     @NotNull
@@ -44,7 +44,7 @@ public class WebApplication extends AuditableAbstractAggregateRoot<WebApplicatio
 
     @Embedded
     @NotNull
-    @AttributeOverride(name = "webAddress", column = @Column(name = "backend_url", nullable = false))
+    @AttributeOverride(name = "webAddress", column = @Column(name = "backend_url", nullable = false, length = 512))
     private WebAddress backendUrl;
 
     @NotNull
