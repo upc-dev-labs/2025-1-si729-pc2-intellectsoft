@@ -35,7 +35,7 @@ public record WebAddress(
         if (webAddress.length() > 512)
             throw new IllegalArgumentException("Web address cannot be longer than 512 characters");
 
-        if (webAddress.matches("^(http|https)://.+"))
+        if (!webAddress.matches("^(http|https)://.+"))
             throw new IllegalArgumentException("Web address must start with http:// or https://");
     }
 }

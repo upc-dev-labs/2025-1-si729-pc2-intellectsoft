@@ -21,7 +21,7 @@ public record CreateWebApplicationCommand(
         if (name.length() > 80)
             throw new IllegalArgumentException("Name cannot exceed 80 characters");
 
-        if (clientId == null || clientId >= 0)
+        if (clientId == null || clientId <= 0)
             throw new IllegalArgumentException("Client Id cannot be null or negative");
 
         if (frontendStack == null || frontendStack.isBlank())

@@ -71,11 +71,11 @@ public class WebApplication extends AuditableAbstractAggregateRoot<WebApplicatio
     public WebApplication(CreateWebApplicationCommand command) {
         this.name = command.name();
         this.clientId = new ClientId(command.clientId());
-        this.frontendStack = FrontendStack.valueOf(command.frontendStack());
+        this.frontendStack = FrontendStack.fromName(command.frontendStack());
         this.frontendUrl = new WebAddress(command.frontendUrl());
-        this.backendStack = BackendStack.valueOf(command.backendStack());
+        this.backendStack = BackendStack.fromName(command.backendStack());
         this.backendUrl = new WebAddress(command.backendUrl());
-        this.cloudPlatform = CloudPlatform.valueOf(command.cloudPlatform());
+        this.cloudPlatform = CloudPlatform.fromName(command.cloudPlatform());
         this.description = command.description();
         this.availablePercentage = command.availablePercentage();
         this.launchDate = command.launchDate();
